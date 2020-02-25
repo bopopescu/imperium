@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Menu</title>
+    </head>
+    <body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <p id="time"></p>
+        <p>Меню</p>
+        <a href="{% url 'territory' %}">территория</a>
+        <a href="{% url 'trade' %}">торговля</a>
+        <a href="{% url 'war' %}">война</a>
+        <a href="{% url 'tax' %}">налоги</a>
+        <a href="{% url 'resource' %}">ресурсы</a>
+        <a href="{% url 'rule' %}">памятка</a>
+        <a href="{% url 'finish' %}">закончить ход</a>
+    </body>
+    <script>
+        function checkStatus() {
+             $.getJSON('{%  url 'finish' %}', function(data) {
+                    if(data.data == 'finish'){
+                        location.replace('{%  url 'result' %}')
+                    }
+                    else {
+                        location.replace('{%  url 'home' %}')
+                    }
+                 });
+        }
+        const allTime = {{ timeSettings }};
+        var startTime = {{ time }};
+        var nowTime = allTime - startTime;
+        setInterval(function(){
+            let minutes = parseInt(nowTime/60);
+            let seconds = nowTime%60;
+            if(seconds<10){
+                let clock = minutes.toString()+":0"+seconds.toString();
+                document.getElementById("time").innerHTML = clock;
+            }
+            else{
+                let clock = minutes.toString()+":"+seconds.toString();
+                document.getElementById("time").innerHTML = clock;
+            }
+            if(nowTime<=0){
+                checkStatus();
+            }
+            nowTime-=1;
+     },1000);
+
+    </script>
+</html>

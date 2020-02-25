@@ -1,0 +1,3 @@
+corn 2000
+warrior 500
+slave 1000

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="block_name">
+        Полисы
+    </div>
+    {% for name in policy %}
+        <div class="policyName">
+            {{ name }}
+        </div>
+    {% endfor %}
+    <a href="{% url 'map' %}">открыть карту</a>
+</body>
+<script>
+     setInterval(function(){
+         $.getJSON('{%  url 'status' %}', function(data) {
+             if(data.data == true){
+                location.replace('{%  url 'menu' %}')
+             }
+  });
+     },6000)
+ </script>
+</html>
