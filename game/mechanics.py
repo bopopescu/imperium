@@ -45,4 +45,4 @@ def add_field(username):
 def getFieldData(username,position):
     d={'LeftTerritory':LeftTerritory,'CenterTerritory':CenterTerritory,'RightTerritory':RightTerritory}
     data = d[position].objects.get(user=username)
-    return ({'building':data.building, 'slave':data.slave,'warrior':data.warrior, 'corn':data.corn})
+    return ({'building':data.building, 'subordinate':data.subordinate,'warrior':data.warrior, 'corn':data.corn})

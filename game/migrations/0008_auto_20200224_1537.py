@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AddField(
             model_name='policy',
-            name='slave',
+            name='subordinate',
             field=models.IntegerField(blank=True, default=1000),
         ),
         migrations.AddField(
@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='session',
-            name='settingsSlave',
+            name='settingsSubordinate',
             field=models.IntegerField(blank=True, default=1000),
         ),
         migrations.AddField(
